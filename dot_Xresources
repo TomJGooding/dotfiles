@@ -48,7 +48,7 @@ Xft.lcdfilter: lcddefault
 URxvt.font:                       xft:NotoSansMono Nerd Font
 
 URxvt.depth:                      32
-URxvt.background:                 [100]#282c34
+URxvt.background:                 [95]#282c34
 URxvt*internalBorder:             10
 URxvt*scrollBar:                  false
 URxvt*mouseWheelScrollPage:       false
