@@ -176,6 +176,10 @@ bindsym $mod+r mode "resize"
 # finds out, if available)
 bar {
         status_command i3status -c ~/.config/i3/i3status.conf
+
+        colors {
+                background #282c34
+        }
 }
 
 # Configure border style
