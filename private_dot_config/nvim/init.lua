@@ -32,6 +32,9 @@ require('packer').startup(function(use)
   -- Fuzzy Finder Algorithm which requires local dependencies to be built. Only load if `make` is available
   use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make', cond = vim.fn.executable "make" == 1 }
 
+  -- Improved indent plugin for treesitter as the builtin is still experimental
+  use({ "yioneko/nvim-yati", requires = "nvim-treesitter/nvim-treesitter" })
+
   if is_bootstrap then
     require('packer').sync()
   end
@@ -191,6 +194,7 @@ require('nvim-treesitter.configs').setup {
   -- Add languages to be installed here that you want installed for treesitter
   ensure_installed = { 'c', 'cpp', 'go', 'lua', 'python', 'rust', 'typescript' },
 
+  yati = { enable = true },
   highlight = { enable = true },
   indent = { enable = true },
   incremental_selection = {
