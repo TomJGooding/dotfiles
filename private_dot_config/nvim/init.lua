@@ -35,6 +35,12 @@ require('packer').startup(function(use)
   -- Improved indent plugin for treesitter as the builtin is still experimental
   use({ "yioneko/nvim-yati", requires = "nvim-treesitter/nvim-treesitter" })
 
+  -- Auto Pairs
+  use {
+	"windwp/nvim-autopairs",
+    config = function() require("nvim-autopairs").setup {} end
+  }
+
   if is_bootstrap then
     require('packer').sync()
   end
@@ -154,6 +160,9 @@ require('gitsigns').setup {
     changedelete = { text = '~' },
   },
 }
+
+-- Enable nvim-autopairs
+require('nvim-autopairs').setup()
 
 -- [[ Configure Telescope ]]
 -- See `:help telescope` and `:help telescope.setup()`
