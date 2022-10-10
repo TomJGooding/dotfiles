@@ -41,6 +41,9 @@ require('packer').startup(function(use)
     config = function() require("nvim-autopairs").setup {} end
   }
 
+  -- null-ls for LSP diagnostics, formatting, code actions, etc.
+  use { 'jose-elias-alvarez/null-ls.nvim', requires = { 'nvim-lua/plenary.nvim' } }
+
   if is_bootstrap then
     require('packer').sync()
   end
@@ -406,6 +409,37 @@ cmp.setup {
     { name = 'luasnip' },
   },
 }
+
+-- [[ Configure nvim-lsp ]]
+local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
+require("null-ls").setup({
+    -- you can reuse a shared lspconfig on_attach callback here
+    on_attach = function(client, bufnr)
+        if client.supports_method("textDocument/formatting") then
+            vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
+            vim.api.nvim_create_autocmd("BufWritePre", {
+                group = augroup,
+                buffer = bufnr,
+                callback = function()
+                    -- on 0.8, you should use vim.lsp.buf.format({ bufnr = bufnr }) instead
+                    -- vim.lsp.buf.formatting_sync()
+                    vim.lsp.buf.format({ bufnr = bufnr })
+                end,
+            })
+        end
+    end,
+    sources = {
+        -- formatting
+        require("null-ls").builtins.formatting.prettier,
+        require("null-ls").builtins.formatting.isort,
+        require("null-ls").builtins.formatting.black,
+        -- diagnostics
+        require("null-ls").builtins.diagnostics.trail_space,
+        require("null-ls").builtins.diagnostics.eslint,
+        require("null-ls").builtins.diagnostics.flake8,
+        require("null-ls").builtins.diagnostics.mypy,
+    },
+})
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
