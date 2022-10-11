@@ -1,0 +1,28 @@
+#
+# ~/.bashrc
+#
+
+# If not running interactively, don't do anything
+[[ $- != *i* ]] && return
+
+PS1='[\u@\h \W]\$ '
+
+# EXPORT
+export HISTCONTROL=ignoredups	# no duplicate entries
+
+# SHOPT
+shopt -s autocd		# auto cd when just path entered
+shopt -s cdspell	# auto-correct spelling mistakes
+shopt -s checkwinsize	# check term size when bash regains control
+shopt -s expand_aliases	# expand aliases
+shopt -s histappend	# append history instead of overwriting
+
+# Add colour to output
+alias ls='ls --color=auto'
+alias grep='grep --color=auto'
+
+# Helpful aliases
+alias rm='rm -i'	# confirm before removing something
+alias cp='cp -i'	# confirm before overwriting something
+alias df='df -h'	# human-readable sizes
+alias free='free -m'	# show sizes in MB
