@@ -44,6 +44,11 @@ require('packer').startup(function(use)
   -- null-ls for LSP diagnostics, formatting, code actions, etc.
   use { 'jose-elias-alvarez/null-ls.nvim', requires = { 'nvim-lua/plenary.nvim' } }
 
+  -- toggleterm.vim to to persist and toggle terminals
+  use { "akinsho/toggleterm.nvim", tag = '*',
+    config = function() require("toggleterm").setup() end
+  }
+
   if is_bootstrap then
     require('packer').sync()
   end
@@ -170,6 +175,17 @@ require('gitsigns').setup {
 
 -- Enable nvim-autopairs
 require('nvim-autopairs').setup()
+
+-- [[ Configure toggleterm.nvim ]]
+require("toggleterm").setup {
+  open_mapping = [[<c-\>]],
+  size = 10,
+  direction = "horizontal",
+  start_in_insert = true,
+  close_on_exit = true,
+  hide_numbers = true,
+}
+
 
 -- [[ Configure Telescope ]]
 -- See `:help telescope` and `:help telescope.setup()`
