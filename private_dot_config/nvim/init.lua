@@ -81,6 +81,10 @@ vim.o.hlsearch = false
 vim.wo.number = true
 vim.wo.relativenumber = true
 
+-- Force splits below and right
+vim.o.splitbelow = true
+vim.o.splitright = true
+
 -- Enable mouse mode
 vim.o.mouse = 'a'
 
