@@ -450,7 +450,7 @@ require("null-ls").setup({
     end,
     sources = {
         -- formatting
-        require("null-ls").builtins.formatting.prettier,
+        require("null-ls").builtins.formatting.prettierd,
         require("null-ls").builtins.formatting.isort,
         require("null-ls").builtins.formatting.black,
         -- diagnostics
