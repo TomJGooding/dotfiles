@@ -90,6 +90,12 @@ vim.wo.relativenumber = true
 vim.o.splitbelow = true
 vim.o.splitright = true
 
+-- Turn off wrapping
+vim.wo.wrap = false
+
+-- Turn off wrapping
+vim.wo.colorcolumn = "80"
+
 -- Enable mouse mode
 vim.o.mouse = 'a'
 
