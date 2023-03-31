@@ -58,6 +58,7 @@ return function(use)
           require("null-ls").builtins.formatting.prettierd,
           require("null-ls").builtins.formatting.isort,
           require("null-ls").builtins.formatting.black,
+          require("null-ls").builtins.formatting.clang_format,
           -- diagnostics
           require("null-ls").builtins.diagnostics.trail_space,
           require("null-ls").builtins.diagnostics.eslint,
