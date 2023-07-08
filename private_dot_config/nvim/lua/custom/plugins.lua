@@ -7,6 +7,14 @@ return function(use)
     end
   })
 
+  -- Show context of currently visible contents
+  use({
+    "nvim-treesitter/nvim-treesitter-context",
+    config = function()
+      require("treesitter-context").setup({})
+    end
+  })
+
   -- Toggle and persist terminals
   use({
     "akinsho/toggleterm.nvim",
