@@ -31,16 +31,6 @@ return function(use)
     end
   })
 
-  -- Stop repeating the movement keys
-  use({
-    "takac/vim-hardtime",
-    config = function()
-      vim.g.hardtime_default_on = 1
-      vim.g.hardtime_showmsg = 1
-      vim.g.hardtime_allow_different_key = 1
-    end
-  })
-
   -- Hook non-LSP sources for diagnostics, formatting, code actions etc.
   use({
     "jose-elias-alvarez/null-ls.nvim",
